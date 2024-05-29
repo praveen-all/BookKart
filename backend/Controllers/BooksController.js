@@ -1,8 +1,22 @@
 const db = require("./../database");
 
 const getAllBooks = (req, res) => {
-  res.status(200).json({
-    status: "succes",
+  db.query("SELECT * FROM books", (err, results) => {
+    if (err) {
+      console.error("Error querying database:", err);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        books: results,
+      },
+    });
   });
 };
 

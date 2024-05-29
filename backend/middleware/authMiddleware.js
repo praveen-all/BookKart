@@ -23,12 +23,14 @@ const protect = async (req, res, next) => {
           }
 
           req.user = results[0];
+
           req.userId = decodeid.id;
-          console.log(req);
+          console.log(req.userId);
+          next();
         }
       );
 
-      next();
+   
     } catch (error) {
       res.status(401).json({
         message: "please provide valid token",
