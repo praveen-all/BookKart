@@ -376,7 +376,18 @@ section {
     overflow: hidden;
     border: var(--border);
     text-align: center;
+    /* margin: 20px; */
 }
+.hey{
+    height: 100vh;
+    /* width: 100vw; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
 
 .featured .featured-slider .box:hover {
     border: var(--border-hover);

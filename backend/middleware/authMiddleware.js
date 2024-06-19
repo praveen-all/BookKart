@@ -5,15 +5,17 @@ const secret = "your_secret_key";
 const protect = async (req, res, next) => {
   let token;
   // console.log(req.headers.authorization);
+  
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
+    
   ) {
     try {
       token = req.headers.authorization.split(" ")[1];
-
+  console.log(token);
       const decodeid = await jwt.verify(token, secret);
-      //    console.log(decodeid);
+         console.log(decodeid);
       db.query(
         "SELECT * FROM users WHERE user_id = ?",
         [decodeid.id],

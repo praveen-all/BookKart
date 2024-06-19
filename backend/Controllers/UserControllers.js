@@ -52,7 +52,7 @@ const createTableAndInsertUser = (req, res) => {
 
 const login = (req, res) => {
   const { email, password } = req.body;
-
+  console.log("hi");
   // Query the database to verify user credentials
   db.query(
     "SELECT * FROM users WHERE email = ? AND password = ?",
@@ -62,6 +62,7 @@ const login = (req, res) => {
         console.error("Error querying database:", err);
         return res.status(500).json({ error: "Internal server error" });
       }
+      // console.log(results);
 
       // Check if user exists and password matches
       if (results.length === 0) {
@@ -69,9 +70,13 @@ const login = (req, res) => {
       }
 
       const user = results[0];
-      const token = jwt.sign({ id: user.user_id, username: user.username }, secret, {
-        expiresIn: "10d",
-      });
+      const token = jwt.sign(
+        { id: user.user_id, username: user.username },
+        secret,
+        {
+          expiresIn: "10d",
+        }
+      );
       res.status(200).json({
         status: "success",
         data: {

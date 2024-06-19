@@ -5,7 +5,7 @@ const { addOrder, orderByUserId } = require("../Controllers/OrderController");
 
 const router = express.Router();
 
-router.post("/add", protect, addOrder);
-router.get("/getbyid", protect, orderByUserId);
+router.post("/add", addOrder);
+router.get("/getbyid/:userId", orderByUserId);
 
 module.exports = router;

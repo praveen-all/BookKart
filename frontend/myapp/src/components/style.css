@@ -356,10 +356,11 @@ section{
     padding-bottom: .5rem;
 }
 
-.icons-container .icons p{
-    font-size: 1.4rem;
+.icons-container .icons h1{
+    font-size: 1.8rem;
     color:var(--light-color);
 }
+
 
 .featured .featured-slider .box{
     margin:2rem 0;
@@ -367,6 +368,8 @@ section{
     overflow: hidden;
     border:var(--border);
     text-align: center;
+    width: 300px;
+   
 }
 
 .featured .featured-slider .box:hover{

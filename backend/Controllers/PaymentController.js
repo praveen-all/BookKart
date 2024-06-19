@@ -5,12 +5,12 @@ const addPayment = (req, res) => {
     CREATE TABLE IF NOT EXISTS payments (
       payment_id INT AUTO_INCREMENT PRIMARY KEY,
       user_id int not null,
-      book_id int not null
+      paymenturl varchar(255),
     );
   `;
 
   // Data to insert
-  const { user_id, book_id } = req.body;
+  const { user_id,paymenturl } = req.body;
 
   const insertUserQuery = `
     INSERT INTO payments (user_id,book_id)
